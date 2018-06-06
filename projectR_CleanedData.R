@@ -16,14 +16,14 @@ shootings$State[is.na(shootings$State)] <- "Unknown"
 shootings$State[shootings$City == "Washington D.C."] = "DC"
 
 shootings$State <- factor(shootings$State)
-levels(shootings$State) <- c("VA", "AL", "AK", "NM", "AZ", "AR", "CA", 
-                             "CA", "CO", "CO", "CT", "FL", "GA", "HI", 
-                             "ID", "IL", "IN", "IA", "KS", "KY", "LA", 
-                             "PA", "LA", "ME", "MA", "MD", "MI", "MN", 
-                             "MS", "MO", "MT", "NE", "NV", "NJ", "NM", 
-                             "NY", "NC", "NV", "OH", "OK", "OR", "PA", 
-                             "PA", "CA", "PA", "SC", "SD", "TN", "TX", 
-                             "TX", "TX", "UT", "VT", "VA", "WA", "WA", 
+levels(shootings$State) <- c("VA", "AL", "AK", "NM", "AZ", "AR", "CA",
+                             "CA", "CO", "CO", "CT", "FL", "GA", "HI",
+                             "ID", "IL", "IN", "IA", "KS", "KY", "LA",
+                             "PA", "LA", "ME", "MA", "MD", "MI", "MN",
+                             "MS", "MO", "MT", "NE", "NV", "NJ", "NM",
+                             "NY", "NC", "NV", "OH", "OK", "OR", "PA",
+                             "PA", "CA", "PA", "SC", "SD", "TN", "TX",
+                             "TX", "TX", "UT", "VT", "VA", "WA", "WA",
                              "WV", "WI", "WY", "DC", "Unknown")
 
 ## -------------- Location Type Column -----------------------------------------
@@ -62,15 +62,15 @@ shootings$Employment_Status[is.na(shootings$Employment_Status)] <- "Unknown"
 
 ## -------------- Mental Health Issues Column ----------------------------------
 
-names(shootings) <- sub("Mental.Health.Issues", "Mental_Health_Issues", 
+names(shootings) <- sub("Mental.Health.Issues", "Mental_Health_Issues",
                         names(shootings), fixed = TRUE)
-shootings$Mental_Health_Issues[shootings$Mental_Health.Issues == "unknown"] <- "Unknown"
+shootings$Mental_Health_Issues[shootings$Mental_Health_Issues == "unknown"] <- "Unknown"
 
 ## -------------- Race Column --------------------------------------------------
 
-shootings$Race[shootings$Race == "Asian American/Some other race" | 
+shootings$Race[shootings$Race == "Asian American/Some other race" |
                  shootings$Race == "Asian American"] <- "Asian"
-shootings$Race[shootings$Race == "Black American or African American/Unknown" | 
+shootings$Race[shootings$Race == "Black American or African American/Unknown" |
                  shootings$Race == "black" |
                  shootings$Race == "Black American or African American" |
                  shootings$Race == "Black"] <- "African American"
@@ -86,7 +86,7 @@ shootings$Race[is.na(shootings$Race)] <- "Unknown"
 
 ## -------------- Gender Column ------------------------------------------------
 
-shootings$Gender[shootings$Gender == "M"] <- "Male" 
+shootings$Gender[shootings$Gender == "M"] <- "Male"
 shootings$Gender[shootings$Gender == "M/F"] <- "Male/Female"
 shootings$Gender[is.na(shootings$Gender)] <- "Unknown"
 
@@ -97,7 +97,7 @@ shootings$Year <- sapply(strsplit(shootings$Date, "/"), "[", 3)
 
 shootings$Month_letters <- shootings$Month
 shootings$Month_letters <- factor(shootings$Month_letters)
-levels(shootings$Month_letters) <- c("Jan", "Oct", "Nov", "Dec", "Feb", "Mar", 
+levels(shootings$Month_letters) <- c("Jan", "Oct", "Nov", "Dec", "Feb", "Mar",
                                      "Apr", "May", "Jun", "Jul", "Aug", "Sep")
 
 ## -------------- Remove Unnecessary Columns -----------------------------------
@@ -107,28 +107,3 @@ shootings <- subset(shootings, select = -c(1, 2))
 
 
 # -----------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
