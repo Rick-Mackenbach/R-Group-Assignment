@@ -104,6 +104,4 @@ levels(shootings$Month_letters) <- c("Jan", "Oct", "Nov", "Dec", "Feb", "Mar",
 
 shootings <- subset(shootings, select = -c(1, 2))
 
-
-
 # -----------------------------------------------
