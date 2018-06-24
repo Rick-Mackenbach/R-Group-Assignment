@@ -2,10 +2,11 @@
 
 ## Load the dataset
 laws <- read.csv('Laws.csv', stringsAsFactors = FALSE)
+open_carry <- select(laws, Open.carry.allowed_H, Open.carry.allowed_L)
 laws$Open.carry.allowed_H <- NULL
 laws$Open.carry.allowed_L <- NULL
 
-## Change all values to integer scores
+## Change all values to scores
 laws[-1][laws[-1] != 'Y'] <- 1
 laws[-1][laws[-1] == 'Y'] <- 0
 
@@ -23,8 +24,8 @@ cleaned_laws <- laws
 rm(laws)
 
 ## Save cleaned dataset
-write.csv(cleaned_laws, file = "cleaned_laws.csv", row.names = FALSE)
+#write.csv(cleaned_laws, file = "cleaned_laws.csv", row.names = FALSE)
 
 ## Save Law score per state
 state_law_scores <- select(cleaned_laws, 'State', 'Law Score')
-write.csv(state_law_scores, file = "state_law_scores", row.names = FALSE)
+#write.csv(state_law_scores, file = "state_law_scores", row.names = FALSE)
