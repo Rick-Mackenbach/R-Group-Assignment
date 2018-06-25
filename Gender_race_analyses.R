@@ -79,8 +79,8 @@ shootings <- shootings %>%
 ## Run LM
 summary(lm(Total_Victims ~ Gender, data = shootings))
 
-## We have a significant interaction, which means that male gender 
-## significantly predicts total victims.
+## We have a significant interaction, which means that there is a significant
+## difference between males and females.
 
 
 ## Use linear regression to predict victims based on race
