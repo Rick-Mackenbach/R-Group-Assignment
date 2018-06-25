@@ -13,8 +13,6 @@ shootings <- read.csv('cleaned_shootings1', stringsAsFactors = FALSE)
 ##--------------------------------##
 
 
-
-
 ## -- Some pre-cleaning -- ##
 ## Remove unkown genders
 shootings$Gender[shootings$Gender == "Unknown"] <- NA
@@ -23,23 +21,27 @@ shootings <- na.omit(shootings)
 
 ##---------------------------------------------------------------------------##
 ##                                                                           ##
-##                            PLOTTING                                       ##
+##                              PLOTTING                                     ##
 ##---------------------------------------------------------------------------##
 ## -- Plot some initial results -- ##
 ## Basic plots
 ## How many males and females are responsible for mass shootings?
 ggplot(shootings, aes(x = Gender)) + 
-  geom_bar() + 
-  theme_set(theme_bw())
+  geom_bar(fill='darkred') + 
+  labs(y = "Amount of Mass Shootings") +
+  theme(text = element_text(size = 20))
 
 ## Show differences between gender and total victims
 ggplot(shootings, aes(x = Gender, y = Total_Victims) ) + 
-  geom_bar(stat='identity') + 
-  theme_set(theme_bw())
+  geom_bar(stat='identity', fill='darkred') + 
+  labs(y = "Amount of Deaths") +
+  theme(text = element_text(size = 20))
 
 ## Show differences between race, gender and total_victims
-ggplot(shootings, aes(x = Gender, y = Total_Victims, color = Race) ) + 
-  geom_bar(stat='identity',position='dodge')
+ggplot(shootings, aes(x = Gender, y = Total_Victims, fill = Race) ) + 
+  geom_bar(stat='identity',position='dodge') +
+  labs(y = "Amount of Deaths") +
+  theme(text = element_text(size = 20))
 
 ## Error bars for gender and amount of kills
 mean_kills <- shootings %>% group_by(Gender) %>%
@@ -49,7 +51,9 @@ mean_kills <- shootings %>% group_by(Gender) %>%
 
 ggplot(mean_kills, aes(x = Gender, y = ymean)) +
   geom_point(size = 2) +
-  geom_errorbar(aes(ymin = ymin, ymax = ymax))
+  geom_errorbar(aes(ymin = ymin, ymax = ymax)) + 
+  labs(y = "Amount of Deaths") +
+  theme(text = element_text(size = 20))
 
 
 ##---------------------------------------------------------------------------##
@@ -96,8 +100,9 @@ shootings <- shootings %>%
 
 ## Run LM
 summary(lm(Total_Victims ~ Race, data = shootings))
-
 ## No significance here
 
+## Perform a T-Test
+t.test(shootings$Total_Victims~shootings$Gender)
 
 ##---------------------------------------------------------------------------##

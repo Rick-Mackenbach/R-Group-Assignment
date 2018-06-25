@@ -2,7 +2,7 @@
 ## Load the dataset
 laws <- read.csv('Laws.csv', stringsAsFactors = FALSE)
 
-open_carry_magazines <- select(laws, Open.carry.allowed_H, Open.carry.allowed_L,
+open_carry_magazines <- select(laws, X, Open.carry.allowed_H, Open.carry.allowed_L,
                                Magazine.size.restriction_H, 
                                Magazine.size.restriction_L)
 
