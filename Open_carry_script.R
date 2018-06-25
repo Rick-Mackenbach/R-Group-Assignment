@@ -16,10 +16,10 @@ shootings_good_states <- left_join(shootings_good_states, open_carry_magazines,
                                    by='State')
 
 ## Change values of state lax on open_carry and magazine restrictions
-shootings_good_states[14:15][shootings_good_states[14:15] != "Y"] <- 0
-shootings_good_states[14:15][shootings_good_states[14:15] == "Y"] <- 1
-shootings_good_states[16:17][shootings_good_states[16:17] != "N"] <- 0
-shootings_good_states[16:17][shootings_good_states[16:17] == "N"] <- 1
+shootings_good_states[14:15][shootings_good_states[14:15] != "Y"] <- 1
+shootings_good_states[14:15][shootings_good_states[14:15] == "Y"] <- 0
+shootings_good_states[16:17][shootings_good_states[16:17] != "N"] <- 1
+shootings_good_states[16:17][shootings_good_states[16:17] == "N"] <- 0
 
 ## Change the values to numeric ones
 shootings_good_states[,14:17] <- sapply(shootings_good_states[,14:17],as.numeric)
@@ -46,7 +46,7 @@ plotting_data <- unique(plotting_data)
 ggplot(plotting_data, aes(x = Freq, y = Law_Score, color = Law_Score))+
   geom_point(position = "jitter", size = 2) + 
   xlim(0, 35) +
-  scale_color_gradient(low = "yellow", high = "darkred") +
+  scale_color_gradient(low = "red", high = "darkred") +
   labs(color = "Degree of difficulty \n to acquire a gun", x = "Mass shootings", y = "Open Carry and Magazine Laws") + 
   ggtitle("Number of Shootings vs Open cary and magazine restrictions") +
   geom_smooth()
