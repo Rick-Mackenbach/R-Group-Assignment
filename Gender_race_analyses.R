@@ -18,9 +18,9 @@ shootings <- read.csv('cleaned_shootings1', stringsAsFactors = FALSE)
 shootings$Gender[shootings$Gender == "Unknown"] <- NA
 shootings <- na.omit(shootings)
 
+shootings$Total_Victims[shootings$Total_Victims == 585] <- 59
 
 ##---------------------------------------------------------------------------##
-##                                                                           ##
 ##                              PLOTTING                                     ##
 ##---------------------------------------------------------------------------##
 ## -- Plot some initial results -- ##
@@ -57,8 +57,7 @@ ggplot(mean_kills, aes(x = Gender, y = ymean)) +
 
 
 ##---------------------------------------------------------------------------##
-##                                                                           ##
-##                            ANALYSES                                       ##
+##                              ANALYSES                                     ##
 ##---------------------------------------------------------------------------##
 ## Remove male/female duo mass-shootings:
 shootings$Gender[shootings$Gender == 'Male/Female'] <- NA

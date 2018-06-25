@@ -47,7 +47,7 @@ ggplot(plotting_data, aes(x = Freq, y = Law_Score, color = Law_Score))+
   geom_point(position = "jitter", size = 2) + 
   xlim(0, 35) +
   scale_color_gradient(low = "red", high = "darkred") +
-  labs(color = "Degree of difficulty \n to acquire a gun", x = "Mass shootings", y = "Open Carry and Magazine Laws") + 
+  labs(color = "Open carry\nMag. Restrict.", x = "Mass shootings", y = "Open Carry and Magazine Laws") + 
   ggtitle("Number of Shootings vs Open cary and magazine restrictions") +
   geom_smooth()
 
