@@ -56,3 +56,4 @@ rm(open_carry_magazines)
 rm(laws)
 rm(shootings_good_states)
 rm(shootings_nr)
+
